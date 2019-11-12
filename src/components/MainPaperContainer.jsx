@@ -14,11 +14,17 @@
  */
 
 import React from "react"
-import ReactDOM from "react-dom"
-import App from "./App"
+import Paper from "@material-ui/core/Paper"
 
-it("renders without crashing", () => {
-    const div = document.createElement("div")
-    ReactDOM.render(<App />, div)
-    ReactDOM.unmountComponentAtNode(div)
-})
+export default props => {
+    const classes = makeStyles(theme => ({
+        button: {
+            margin: theme.spacing(1)
+        }
+    }))()
+
+    return (
+        <Paper className={classes.button}>
+        </Paper>
+    )
+}
