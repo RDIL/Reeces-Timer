@@ -41,8 +41,6 @@ export default props => {
 
     let [isTimerRunning, setTimerIsRunning] = React.useState(false)
 
-    let [titleText, setTitleText] = React.useState("Timer")
-
     const [secondsValue, setSecondsValue] = React.useState(0)
     const [minutesValue, setMinutesValue] = React.useState(10)
 
@@ -82,6 +80,27 @@ export default props => {
         }
     }
 
+    React.useEffect(() => {
+        setTimeout(() => {
+            // componentDidMount
+            if(isTimerRunning) {
+                if(secondsValue < 1) {
+                    if (minutesValue < 1) {
+                        console.log("DONE")
+                    } else {
+                        setSecondsValue(59)
+                        setMinutesValue(minutesValue - 1)
+                    }
+                } else {
+                    setSecondsValue(secondsValue - 1)
+                }
+            }
+
+            // componentWillUnmount
+            return () => {}
+        }, 1000)
+    })
+
     return (
         <Paper
             className={classes.button}
@@ -91,11 +110,15 @@ export default props => {
             }}
         >
             <br />
-            <Typography variant="h2">{titleText}</Typography>
+            <Typography variant="h2">
+                {!isTimerRunning
+                    ? "Timer"
+                    : `${minutesValue}:${prettySecondsValue(secondsValue)}`}
+            </Typography>
             <br />
             <Card>
                 <br />
-                <div className={classes.restrictedWidth}>
+                <div className={classes.restrictedWidth} hidden={isTimerRunning}>
                     <Slider
                         value={
                             typeof minutesValue === "number" ? minutesValue : 0
