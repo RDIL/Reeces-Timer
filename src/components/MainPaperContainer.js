@@ -23,6 +23,7 @@ import Input from "@material-ui/core/Input"
 import Button from "@material-ui/core/Button"
 import Clock from "@material-ui/icons/Alarm"
 import Tooltip from "@material-ui/core/Tooltip"
+import { prettySecondsValue } from "../TimeUtils"
 
 export default props => {
     const classes = makeStyles(theme => ({
@@ -40,23 +41,44 @@ export default props => {
 
     let [isTimerRunning, setTimerIsRunning] = React.useState(false)
 
-    const timeLeft = "Hi"
-    let titleText = isTimerRunning? timeLeft : "Timer"
+    let [titleText, setTitleText] = React.useState("Timer")
 
-    const [tfValue, setTfValue] = React.useState(30)
-    const handleSliderChange = (event, newValue) => {
-        setTfValue(newValue)
+    const [secondsValue, setSecondsValue] = React.useState(0)
+    const [minutesValue, setMinutesValue] = React.useState(10)
+
+    const handleSecondSliderChange = (event, newValue) => {
+        setSecondsValue(newValue)
+    }
+    const handleSecondInputChange = event => {
+        setSecondsValue(
+            event.target.value === "" ? "" : Number(event.target.value)
+        )
     }
 
-    const handleInputChange = event => {
-        setTfValue(event.target.value === ''? '' : Number(event.target.value))
+    const handleMinuteInputChange = event => {
+        setMinutesValue(
+            event.target.value === "" ? "" : Number(event.target.value)
+        )
     }
+    const handleMinuteSliderChange = (event, newValue) => {
+        setMinutesValue(newValue)
+    }
+
+    const toggleRunStatus = event => setTimerIsRunning(!isTimerRunning)
 
     const handleBlur = () => {
-        if (tfValue < 0) {
-            setTfValue(0)
-        } else if (tfValue > 100) {
-            setTfValue(100)
+        if (secondsValue < 0) {
+            setSecondsValue(0)
+        } else if (secondsValue > 60) {
+            setSecondsValue(0)
+        }
+    }
+
+    const handleAbstractBlur = () => {
+        if (minutesValue < 0) {
+            setMinutesValue(0)
+        } else if (minutesValue > 60) {
+            setMinutesValue(0)
         }
     }
 
@@ -69,43 +91,75 @@ export default props => {
             }}
         >
             <br />
-                <Typography variant="h2">
-                    {titleText}
-                </Typography>
+            <Typography variant="h2">{titleText}</Typography>
+            <br />
+            <Card>
                 <br />
-                <Card>
+                <div className={classes.restrictedWidth}>
+                    <Slider
+                        value={
+                            typeof minutesValue === "number" ? minutesValue : 0
+                        }
+                        onChange={handleMinuteSliderChange}
+                        max="60"
+                    />
+                    <Input
+                        className={classes.input}
+                        value={minutesValue}
+                        margin="dense"
+                        onChange={handleMinuteInputChange}
+                        onBlur={handleAbstractBlur}
+                        inputProps={{
+                            step: 1,
+                            min: 0,
+                            max: 60,
+                            type: "number"
+                        }}
+                    />
+                    {/* BEGIN SECONDS */}
+                    <Slider
+                        value={
+                            typeof secondsValue === "number" ? secondsValue : 0
+                        }
+                        onChange={handleSecondSliderChange}
+                        max="60"
+                    />
+                    <Input
+                        className={classes.input}
+                        value={secondsValue}
+                        margin="dense"
+                        onChange={handleSecondInputChange}
+                        onBlur={handleBlur}
+                        inputProps={{
+                            step: 1,
+                            min: 0,
+                            max: 60,
+                            type: "number"
+                        }}
+                    />
                     <br />
-                    <div className={classes.restrictedWidth}>
-                        <Slider
-                            value={typeof tfValue === 'number' ? tfValue : 0}
-                            onChange={handleSliderChange}
-                            max="60"
-                        />
-                        <Input
-                            className={classes.input}
-                            value={tfValue}
-                            margin="dense"
-                            onChange={handleInputChange}
-                            onBlur={handleBlur}
-                            inputProps={{
-                                step: 10,
-                                min: 0,
-                                max: 60,
-                                type: 'number'
-                            }}
-                        />
-                    </div>
-                    <Tooltip title="Begin Timer">
-                        <Button
-                            variant="contained"
-                            disabled={isTimerRunning}
-                            color="primary"
-                            startIcon={<Clock />}
-                        >Let's Do This</Button>
-                    </Tooltip>
                     <br />
-                    <br />
-                </Card>
+                    <Typography variant="caption">
+                        {isTimerRunning
+                            ? ""
+                            : `(${minutesValue}:${prettySecondsValue(
+                                  secondsValue
+                              )})`}
+                    </Typography>
+                </div>
+                <Tooltip title="Begin Timer">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<Clock />}
+                        onClick={toggleRunStatus}
+                    >
+                        {isTimerRunning ? "Stop!!!" : "Let's Do This"}
+                    </Button>
+                </Tooltip>
+                <br />
+                <br />
+            </Card>
             <br />
         </Paper>
     )
