@@ -15,11 +15,13 @@
 
 import React from "react"
 import NavBar from "./components/NavBar"
+import MainPaperContainer from "./components/MainPaperContainer"
 
 export default () => {
     return (
         <div>
             <NavBar />
+            <MainPaperContainer />
         </div>
     )
 }
