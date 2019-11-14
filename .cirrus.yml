@@ -13,7 +13,7 @@ test_task:
 deploy_task:
   only_if: $CIRRUS_BRANCH == 'master'
   env:
-    DEPLOY_TOKEN: ENCRYPTED[d0b60a11a693454be3eaffcf678f90d6d574902d85ae22432e8c5017181c6e45ee10bf56041ab3af605e39c1d7f6274e]
+    DEPLOY_TOKEN: ENCRYPTED[0ae86625c7337b4ba15d976173367299c357fc0a38fd9c6c22e7eb4248290e53dfc6abf22cc221b842c5089f929a0825]
   container:
     image: node:latest
   always:
