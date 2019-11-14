@@ -18,5 +18,7 @@ export let buildYouTubeEmbedUrl = (video_id: String) => {
 }
 
 export let prettySecondsValue = (secondsCountNumber: Number) => {
-    return secondsCountNumber < 10? String("0" + secondsCountNumber) : secondsCountNumber
+    return secondsCountNumber < 10
+        ? String("0" + secondsCountNumber)
+        : secondsCountNumber
 }

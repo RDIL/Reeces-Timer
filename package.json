@@ -15,7 +15,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "prettier": "prettier --write **/*.{css,js,html,json}",
+        "prettier": "prettier --write **/*.{css,js,html,json,ts,jsx}",
         "predeploy": "yarn build",
         "deploy": "gh-pages -d build",
         "deploy-clean": "gh-pages-clean"

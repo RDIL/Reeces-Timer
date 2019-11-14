@@ -17,7 +17,7 @@ import React from "react"
 import { buildYouTubeEmbedUrl } from "../Utilities"
 
 export default props => {
-    return props.show && video_id !== null ? (
+    return props.show && props.video_id !== null ? (
         <iframe
             width="0"
             height="0"
