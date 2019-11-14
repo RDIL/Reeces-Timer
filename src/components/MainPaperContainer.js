@@ -23,7 +23,6 @@ import Button from "@material-ui/core/Button"
 import Clock from "@material-ui/icons/Alarm"
 import Tooltip from "@material-ui/core/Tooltip"
 import Select from "@material-ui/core/Select"
-import InputLabel from "@material-ui/core/InputLabel"
 import MenuItem from "@material-ui/core/MenuItem"
 import { prettySecondsValue } from "../Utilities"
 import LoadableSound from "./LoadableSound"
@@ -124,7 +123,6 @@ export default props => {
                 margin: "15px"
             }}
         >
-            <br />
             <Typography variant="h2">
                 {!isTimerRunning
                     ? "Timer"
@@ -132,7 +130,6 @@ export default props => {
             </Typography>
             <br />
             <div>
-                <br />
                 <div
                     className={classes.restrictedWidth}
                     hidden={isTimerRunning}
@@ -186,8 +183,10 @@ export default props => {
                     <br />
                     <br />
                     <br />
+                    <Typography variant="overline">
+                        Completion Sound
+                    </Typography>
                     <form autoComplete="off">
-                        <InputLabel>Completion Sound</InputLabel>
                         <Select onChange={handleSoundChange} value={sound}>
                             {listOfVideos}
                         </Select>
