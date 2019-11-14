@@ -14,27 +14,19 @@
  */
 
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
+import { buildYouTubeEmbedUrl } from "../Utilities"
 
 export default props => {
-    const classes = makeStyles(theme => ({
-        title: {
-            flexGrow: 1.01
-        }
-    }))()
-
-    return (
-        <div>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        Reece's Cool Timer
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-        </div>
+    return props.show && video_id !== null ? (
+        <iframe
+            width="0"
+            height="0"
+            src={buildYouTubeEmbedUrl(props.video_id)}
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            title="music"
+        />
+    ) : (
+        <div hidden />
     )
 }

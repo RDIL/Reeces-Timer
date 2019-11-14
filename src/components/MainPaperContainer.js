@@ -16,14 +16,25 @@
 import React from "react"
 import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
-import Card from "@material-ui/core/Card"
 import { makeStyles } from "@material-ui/core/styles"
 import Slider from "@material-ui/core/Slider"
 import Input from "@material-ui/core/Input"
 import Button from "@material-ui/core/Button"
 import Clock from "@material-ui/icons/Alarm"
 import Tooltip from "@material-ui/core/Tooltip"
-import { prettySecondsValue } from "../TimeUtils"
+import Select from "@material-ui/core/Select"
+import InputLabel from "@material-ui/core/InputLabel"
+import MenuItem from "@material-ui/core/MenuItem"
+import { prettySecondsValue } from "../Utilities"
+import LoadableSound from "./LoadableSound"
+
+const vids = ["Birds Chirping"]
+const ids = ["54n9E_LwQvQ"]
+let listOfVideos = []
+
+for (let key in vids) {
+    listOfVideos.push(<MenuItem value={ids[key]}>{vids[key]}</MenuItem>)
+}
 
 export default props => {
     const classes = makeStyles(theme => ({
@@ -35,14 +46,17 @@ export default props => {
         },
         restrictedWidth: {
             width: 250,
-            marginLeft: theme.spacing(2)
+            marginLeft: theme.spacing(56),
+            marginRight: theme.spacing(100)
         }
     }))()
 
-    let [isTimerRunning, setTimerIsRunning] = React.useState(false)
+    const [isTimerRunning, setTimerIsRunning] = React.useState(false)
 
     const [secondsValue, setSecondsValue] = React.useState(0)
     const [minutesValue, setMinutesValue] = React.useState(10)
+
+    const [sound, setSound] = React.useState("")
 
     const handleSecondSliderChange = (event, newValue) => {
         setSecondsValue(newValue)
@@ -61,6 +75,8 @@ export default props => {
     const handleMinuteSliderChange = (event, newValue) => {
         setMinutesValue(newValue)
     }
+
+    const handleSoundChange = event => setSound(event.target.value)
 
     const toggleRunStatus = event => setTimerIsRunning(!isTimerRunning)
 
@@ -83,8 +99,8 @@ export default props => {
     React.useEffect(() => {
         setTimeout(() => {
             // componentDidMount
-            if(isTimerRunning) {
-                if(secondsValue < 1) {
+            if (isTimerRunning) {
+                if (secondsValue < 1) {
                     if (minutesValue < 1) {
                         console.log("DONE")
                     } else {
@@ -96,7 +112,6 @@ export default props => {
                 }
             }
 
-            // componentWillUnmount
             return () => {}
         }, 1000)
     })
@@ -105,7 +120,7 @@ export default props => {
         <Paper
             className={classes.button}
             style={{
-                padding: "40px",
+                padding: "35px",
                 margin: "15px"
             }}
         >
@@ -116,9 +131,14 @@ export default props => {
                     : `${minutesValue}:${prettySecondsValue(secondsValue)}`}
             </Typography>
             <br />
-            <Card>
+            <div>
                 <br />
-                <div className={classes.restrictedWidth} hidden={isTimerRunning}>
+                <div
+                    className={classes.restrictedWidth}
+                    hidden={isTimerRunning}
+                >
+                    <br />
+                    <Typography variant="overline">Minutes</Typography>
                     <Slider
                         value={
                             typeof minutesValue === "number" ? minutesValue : 0
@@ -139,7 +159,10 @@ export default props => {
                             type: "number"
                         }}
                     />
-                    {/* BEGIN SECONDS */}
+                    <br />
+                    <br />
+                    <br />
+                    <Typography variant="overline">Seconds</Typography>
                     <Slider
                         value={
                             typeof secondsValue === "number" ? secondsValue : 0
@@ -162,14 +185,16 @@ export default props => {
                     />
                     <br />
                     <br />
-                    <Typography variant="caption">
-                        {isTimerRunning
-                            ? ""
-                            : `(${minutesValue}:${prettySecondsValue(
-                                  secondsValue
-                              )})`}
-                    </Typography>
+                    <br />
+                    <form autoComplete="off">
+                        <InputLabel>Completion Sound</InputLabel>
+                        <Select onChange={handleSoundChange} value={sound}>
+                            {listOfVideos}
+                        </Select>
+                    </form>
+                    <br />
                 </div>
+                <br />
                 <Tooltip title="Begin Timer">
                     <Button
                         variant="contained"
@@ -177,13 +202,22 @@ export default props => {
                         startIcon={<Clock />}
                         onClick={toggleRunStatus}
                     >
-                        {isTimerRunning ? "Stop!!!" : "Let's Do This"}
+                        {isTimerRunning ? "Stop!" : "Let's Do This"}
                     </Button>
                 </Tooltip>
                 <br />
-                <br />
-            </Card>
+            </div>
             <br />
+            <LoadableSound
+                video_id={sound}
+                show={
+                    isTimerRunning &&
+                    // eslint-disable-next-line
+                    secondsValue == 0 &&
+                    // eslint-disable-next-line
+                    minutesValue == 0
+                }
+            />
         </Paper>
     )
 }
