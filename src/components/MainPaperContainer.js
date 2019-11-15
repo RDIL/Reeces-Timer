@@ -97,12 +97,11 @@ export default props => {
 
     React.useEffect(() => {
         setTimeout(() => {
-            // componentDidMount
+            // every 1 second, the component will unmount,
+            // remount, and then run this
             if (isTimerRunning) {
                 if (secondsValue < 1) {
-                    if (minutesValue < 1) {
-                        console.log("DONE")
-                    } else {
+                    if (!minutesValue < 1) {
                         setSecondsValue(59)
                         setMinutesValue(minutesValue - 1)
                     }
@@ -183,9 +182,7 @@ export default props => {
                     <br />
                     <br />
                     <br />
-                    <Typography variant="overline">
-                        Completion Sound
-                    </Typography>
+                    <Typography variant="overline">Completion Sound</Typography>
                     <form autoComplete="off">
                         <Select onChange={handleSoundChange} value={sound}>
                             {listOfVideos}
@@ -194,7 +191,7 @@ export default props => {
                     <br />
                 </div>
                 <br />
-                <Tooltip title="Begin Timer">
+                <Tooltip title={isTimerRunning ? "Stop Timer" : "Begin Timer"}>
                     <Button
                         variant="contained"
                         color="primary"
@@ -212,7 +209,7 @@ export default props => {
                 show={
                     isTimerRunning &&
                     // eslint-disable-next-line
-                    secondsValue == 0 &&
+                    secondsValue <= 3 &&
                     // eslint-disable-next-line
                     minutesValue == 0
                 }
