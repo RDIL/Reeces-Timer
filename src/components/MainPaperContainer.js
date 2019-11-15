@@ -134,9 +134,9 @@ export default props => {
                     container
                     justify="center"
                     alignItems="center"
-                    hidden={isTimerRunning}
                 >
                     <div
+                        hidden={isTimerRunning}
                         className={classes.restrictedWidth}
                     >
                         <br />
