@@ -24,6 +24,7 @@ import Clock from "@material-ui/icons/Alarm"
 import Tooltip from "@material-ui/core/Tooltip"
 import Select from "@material-ui/core/Select"
 import MenuItem from "@material-ui/core/MenuItem"
+import Grid from "@material-ui/core/Grid"
 import { prettySecondsValue } from "../Utilities"
 import LoadableSound from "./LoadableSound"
 
@@ -43,16 +44,11 @@ for (let key in vids) {
 
 export default props => {
     const classes = makeStyles(theme => ({
-        button: {
-            margin: theme.spacing(1)
-        },
         input: {
             width: 42
         },
         restrictedWidth: {
-            width: 250,
-            marginLeft: theme.spacing(56),
-            marginRight: theme.spacing(100)
+            width: 250
         }
     }))()
 
@@ -93,7 +89,7 @@ export default props => {
         }
     }
 
-    const handleAbstractBlur = () => {
+    const handleMBlur = () => {
         if (minutesValue < 0) {
             setMinutesValue(0)
         } else if (minutesValue > 60) {
@@ -122,7 +118,6 @@ export default props => {
 
     return (
         <Paper
-            className={classes.button}
             style={{
                 padding: "35px",
                 margin: "15px"
@@ -135,67 +130,73 @@ export default props => {
             </Typography>
             <br />
             <div>
-                <div
-                    className={classes.restrictedWidth}
+                <Grid
+                    container
+                    justify="center"
+                    alignItems="center"
                     hidden={isTimerRunning}
                 >
-                    <br />
-                    <Typography variant="overline">Minutes</Typography>
-                    <Slider
-                        value={
-                            typeof minutesValue === "number" ? minutesValue : 0
-                        }
-                        onChange={handleMinuteSliderChange}
-                        max="60"
-                    />
-                    <Input
-                        className={classes.input}
-                        value={minutesValue}
-                        margin="dense"
-                        onChange={handleMinuteInputChange}
-                        onBlur={handleAbstractBlur}
-                        inputProps={{
-                            step: 1,
-                            min: 0,
-                            max: 60,
-                            type: "number"
-                        }}
-                    />
-                    <br />
-                    <br />
-                    <br />
-                    <Typography variant="overline">Seconds</Typography>
-                    <Slider
-                        value={
-                            typeof secondsValue === "number" ? secondsValue : 0
-                        }
-                        onChange={handleSecondSliderChange}
-                        max="60"
-                    />
-                    <Input
-                        className={classes.input}
-                        value={secondsValue}
-                        margin="dense"
-                        onChange={handleSecondInputChange}
-                        onBlur={handleBlur}
-                        inputProps={{
-                            step: 1,
-                            min: 0,
-                            max: 60,
-                            type: "number"
-                        }}
-                    />
-                    <br />
-                    <br />
-                    <br />
-                    <Typography variant="overline">Completion Sound</Typography>
-                    <form autoComplete="off">
-                        <Select onChange={handleSoundChange} value={sound}>
-                            {listOfVideos}
-                        </Select>
-                    </form>
-                    <br />
-                </div>
+                    <div
+                        className={classes.restrictedWidth}
+                    >
+                        <br />
+                        <Typography variant="overline">Minutes</Typography>
+                        <Slider
+                            value={
+                                typeof minutesValue === "number" ? minutesValue : 0
+                            }
+                            onChange={handleMinuteSliderChange}
+                            max="60"
+                        />
+                        <Input
+                            className={classes.input}
+                            value={minutesValue}
+                            margin="dense"
+                            onChange={handleMinuteInputChange}
+                            onBlur={handleMBlur}
+                            inputProps={{
+                                step: 1,
+                                min: 0,
+                                max: 60,
+                                type: "number"
+                            }}
+                        />
+                        <br />
+                        <br />
+                        <br />
+                        <Typography variant="overline">Seconds</Typography>
+                        <Slider
+                            value={
+                                typeof secondsValue === "number" ? secondsValue : 0
+                            }
+                            onChange={handleSecondSliderChange}
+                            max="60"
+                        />
+                        <Input
+                            className={classes.input}
+                            value={secondsValue}
+                            margin="dense"
+                            onChange={handleSecondInputChange}
+                            onBlur={handleBlur}
+                            inputProps={{
+                                step: 1,
+                                min: 0,
+                                max: 60,
+                                type: "number"
+                            }}
+                        />
+                        <br />
+                        <br />
+                        <br />
+                        <Typography variant="overline">Completion Sound</Typography>
+                        <form autoComplete="off">
+                            <Select onChange={handleSoundChange} value={sound}>
+                                {listOfVideos}
+                            </Select>
+                        </form>
+                        <br />
+                    </div>
+                </Grid>
                 <br />
                 <Tooltip title={isTimerRunning ? "Stop Timer" : "Begin Timer"}>
                     <Button
