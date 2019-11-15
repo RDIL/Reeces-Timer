@@ -27,8 +27,14 @@ import MenuItem from "@material-ui/core/MenuItem"
 import { prettySecondsValue } from "../Utilities"
 import LoadableSound from "./LoadableSound"
 
-const vids = ["Birds Chirping"]
-const ids = ["54n9E_LwQvQ"]
+const vids = [
+    "Birds Chirping",
+    "Xylophone Notes"
+]
+const ids = [
+    "54n9E_LwQvQ",
+    "258OTDCrHg0"
+]
 let listOfVideos = []
 
 for (let key in vids) {
