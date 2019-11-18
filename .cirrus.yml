@@ -1,6 +1,7 @@
+container:
+  image: node:latest
+
 test_task:
-  container:
-    image: node:latest
   always:
     yarn_cache:
       folder: node_modules
@@ -14,8 +15,6 @@ deploy_task:
   only_if: $CIRRUS_BRANCH == 'master'
   env:
     DEPLOY_TOKEN: ENCRYPTED[0ae86625c7337b4ba15d976173367299c357fc0a38fd9c6c22e7eb4248290e53dfc6abf22cc221b842c5089f929a0825]
-  container:
-    image: node:latest
   always:
     yarn_cache:
       folder: node_modules

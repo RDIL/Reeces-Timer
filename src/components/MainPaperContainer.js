@@ -121,10 +121,7 @@ export default props => {
             <br />
             <div>
                 <Grid container justify="center" alignItems="center">
-                    <div
-                        hidden={isTimerRunning}
-                        className={classes.small}
-                    >
+                    <div hidden={isTimerRunning} className={classes.small}>
                         <br />
                         <Typography variant="overline">Minutes</Typography>
                         <Slider
@@ -197,9 +194,9 @@ export default props => {
                         onClick={toggleRunStatus}
                         disabled={
                             /* eslint-disable */
-                            !isTimerRunning
-                            && minutesValue == 0
-                            && secondsValue == 0
+                            !isTimerRunning &&
+                            minutesValue == 0 &&
+                            secondsValue == 0
                             /* eslint-enable */
                         }
                         color={isTimerRunning ? "secondary" : "primary"}
@@ -213,11 +210,8 @@ export default props => {
             <LoadableSound
                 video_id={sound}
                 show={
-                    /* eslint-disable */
-                    isTimerRunning &&
-                    secondsValue <= 3 &&
-                    minutesValue == 0
-                    /* eslint-enable */
+                    // eslint-disable-next-line
+                    isTimerRunning && secondsValue <= 3 && minutesValue == 0
                 }
             />
         </Paper>
