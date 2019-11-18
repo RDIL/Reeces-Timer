@@ -28,14 +28,8 @@ import Grid from "@material-ui/core/Grid"
 import { prettySecondsValue } from "../Utilities"
 import LoadableSound from "./LoadableSound"
 
-const vids = [
-    "Birds Chirping",
-    "Xylophone Notes"
-]
-const ids = [
-    "54n9E_LwQvQ",
-    "258OTDCrHg0"
-]
+const vids = ["Birds Chirping", "Xylophone Notes"]
+const ids = ["54n9E_LwQvQ", "258OTDCrHg0"]
 let listOfVideos = []
 
 for (let key in vids) {
@@ -130,11 +124,7 @@ export default props => {
             </Typography>
             <br />
             <div>
-                <Grid
-                    container
-                    justify="center"
-                    alignItems="center"
-                >
+                <Grid container justify="center" alignItems="center">
                     <div
                         hidden={isTimerRunning}
                         className={classes.restrictedWidth}
@@ -143,7 +133,9 @@ export default props => {
                         <Typography variant="overline">Minutes</Typography>
                         <Slider
                             value={
-                                typeof minutesValue === "number" ? minutesValue : 0
+                                typeof minutesValue === "number"
+                                    ? minutesValue
+                                    : 0
                             }
                             onChange={handleMinuteSliderChange}
                             max="60"
@@ -167,7 +159,9 @@ export default props => {
                         <Typography variant="overline">Seconds</Typography>
                         <Slider
                             value={
-                                typeof secondsValue === "number" ? secondsValue : 0
+                                typeof secondsValue === "number"
+                                    ? secondsValue
+                                    : 0
                             }
                             onChange={handleSecondSliderChange}
                             max="60"
@@ -188,7 +182,9 @@ export default props => {
                         <br />
                         <br />
                         <br />
-                        <Typography variant="overline">Completion Sound</Typography>
+                        <Typography variant="overline">
+                            Completion Sound
+                        </Typography>
                         <form autoComplete="off">
                             <Select onChange={handleSoundChange} value={sound}>
                                 {listOfVideos}
