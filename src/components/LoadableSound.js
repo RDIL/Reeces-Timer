@@ -25,7 +25,7 @@ export default props => {
             src={buildYouTubeEmbedUrl(props.video_id)}
             frameBorder="0"
             allow="autoplay; encrypted-media"
-            title="music"
+            title="sound"
         />
     ) : (
         <div hidden />

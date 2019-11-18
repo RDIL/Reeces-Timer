@@ -201,7 +201,7 @@ export default props => {
                         startIcon={<Clock />}
                         onClick={toggleRunStatus}
                     >
-                        {isTimerRunning ? "Stop!" : "Let's Do This"}
+                        {isTimerRunning ? "Stop!" : "Begin!"}
                     </Button>
                 </Tooltip>
                 <br />
