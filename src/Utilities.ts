@@ -13,8 +13,11 @@
  * limitations under the License.
  */
 
-export const buildYouTubeEmbedUrl = (video_id: String) => {
-    return `https://www.youtube.com/embed/${video_id}?rel=0&amp;controls=0&amp;autoplay=1`
+export const buildYouTubeEmbedUrl = (data: Array<String | null>) => {
+    const params = `controls=0&amp;autoplay=1${
+        data[1] != null ? `&amp;start=${data[1]}` : ""
+    }`
+    return `https://www.youtube.com/embed/${data[0]}?${params}`
 }
 
 export const prettySecondsValue = (secondsCountNumber: Number) => {

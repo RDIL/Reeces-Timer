@@ -18,11 +18,11 @@ import { buildYouTubeEmbedUrl } from "../Utilities"
 
 export default props => {
     // eslint-disable-next-line
-    return props.show && props.video_id != "" ? (
+    return props.show && props.data[0] != "" ? (
         <iframe
             width="0"
             height="0"
-            src={buildYouTubeEmbedUrl(props.video_id)}
+            src={buildYouTubeEmbedUrl(props.data)}
             frameBorder="0"
             allow="autoplay; encrypted-media"
             title="sound"

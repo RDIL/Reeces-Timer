@@ -14,14 +14,35 @@
  */
 
 import React from "react"
-import NavBar from "./components/NavBar"
 import MainPaperContainer from "./components/MainPaperContainer"
+import { makeStyles } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
 
 export default () => {
+    const classes = makeStyles(theme => ({
+        title: {
+            flexGrow: 1.01
+        },
+        input: {
+            width: 42
+        },
+        small: {
+            width: 250
+        }
+    }))()
+
     return (
         <div>
-            <NavBar />
-            <MainPaperContainer />
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="h6" className={classes.title}>
+                        Reece's Cool Timer
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <MainPaperContainer styleRefs={classes} />
         </div>
     )
 }

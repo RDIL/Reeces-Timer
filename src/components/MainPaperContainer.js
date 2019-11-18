@@ -16,7 +16,6 @@
 import React from "react"
 import Paper from "@material-ui/core/Paper"
 import Typography from "@material-ui/core/Typography"
-import { makeStyles } from "@material-ui/core/styles"
 import Slider from "@material-ui/core/Slider"
 import Input from "@material-ui/core/Input"
 import Button from "@material-ui/core/Button"
@@ -28,24 +27,18 @@ import Grid from "@material-ui/core/Grid"
 import { prettySecondsValue } from "../Utilities"
 import LoadableSound from "./LoadableSound"
 
-const vids = ["Birds Chirping", "Xylophone Notes"]
-const ids = ["54n9E_LwQvQ", "258OTDCrHg0"]
+const vids = ["Birds Chirping", "Xylophone Notes", "Bell"]
+const ids = ["54n9E_LwQvQ", "258OTDCrHg0", "hrqIq5hBFSw"]
+const start_ats = [null, null, "6"]
 let listOfVideos = []
 
 for (let key in vids) {
-    listOfVideos.push(<MenuItem value={ids[key]}>{vids[key]}</MenuItem>)
+    listOfVideos.push(
+        <MenuItem value={[ids[key], start_ats[key]]}>{vids[key]}</MenuItem>
+    )
 }
 
 export default props => {
-    const classes = makeStyles(theme => ({
-        input: {
-            width: 42
-        },
-        small: {
-            width: 250
-        }
-    }))()
-
     const [isTimerRunning, setTimerIsRunning] = React.useState(false)
 
     const [secondsValue, setSecondsValue] = React.useState(0)
@@ -121,7 +114,10 @@ export default props => {
             <br />
             <div>
                 <Grid container justify="center" alignItems="center">
-                    <div hidden={isTimerRunning} className={classes.small}>
+                    <div
+                        hidden={isTimerRunning}
+                        className={props.styleRefs.small}
+                    >
                         <br />
                         <Typography variant="overline">Minutes</Typography>
                         <Slider
@@ -134,7 +130,7 @@ export default props => {
                             max="60"
                         />
                         <Input
-                            className={classes.input}
+                            className={props.styleRefs.input}
                             value={minutesValue}
                             margin="dense"
                             onChange={handleMinuteInputChange}
@@ -160,7 +156,7 @@ export default props => {
                             max="60"
                         />
                         <Input
-                            className={classes.input}
+                            className={props.styleRefs.input}
                             value={secondsValue}
                             margin="dense"
                             onChange={handleSecondInputChange}
@@ -208,7 +204,7 @@ export default props => {
             </div>
             <br />
             <LoadableSound
-                video_id={sound}
+                data={sound}
                 show={
                     // eslint-disable-next-line
                     isTimerRunning && secondsValue <= 3 && minutesValue == 0
