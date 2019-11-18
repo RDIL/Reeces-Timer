@@ -41,7 +41,7 @@ export default props => {
         input: {
             width: 42
         },
-        restrictedWidth: {
+        small: {
             width: 250
         }
     }))()
@@ -76,25 +76,21 @@ export default props => {
     const toggleRunStatus = event => setTimerIsRunning(!isTimerRunning)
 
     const handleBlur = () => {
-        if (secondsValue < 0) {
-            setSecondsValue(0)
-        } else if (secondsValue > 60) {
+        if (secondsValue < 0 || secondsValue > 60) {
             setSecondsValue(0)
         }
     }
 
     const handleMBlur = () => {
-        if (minutesValue < 0) {
-            setMinutesValue(0)
-        } else if (minutesValue > 60) {
+        if (minutesValue < 0 || minutesValue > 60) {
             setMinutesValue(0)
         }
     }
 
     React.useEffect(() => {
         setTimeout(() => {
-            // every 1 second, the component will unmount,
-            // remount, and then run this
+            // the component constantly re-renders, and so every
+            // time it rerenders on the second, it runs this
             if (isTimerRunning) {
                 if (secondsValue < 1) {
                     if (!minutesValue < 1) {
@@ -127,7 +123,7 @@ export default props => {
                 <Grid container justify="center" alignItems="center">
                     <div
                         hidden={isTimerRunning}
-                        className={classes.restrictedWidth}
+                        className={classes.small}
                     >
                         <br />
                         <Typography variant="overline">Minutes</Typography>
@@ -197,9 +193,16 @@ export default props => {
                 <Tooltip title={isTimerRunning ? "Stop Timer" : "Begin Timer"}>
                     <Button
                         variant="contained"
-                        color="primary"
                         startIcon={<Clock />}
                         onClick={toggleRunStatus}
+                        disabled={
+                            /* eslint-disable */
+                            !isTimerRunning
+                            && minutesValue == 0
+                            && secondsValue == 0
+                            /* eslint-enable */
+                        }
+                        color={isTimerRunning ? "secondary" : "primary"}
                     >
                         {isTimerRunning ? "Stop!" : "Begin!"}
                     </Button>
@@ -210,11 +213,11 @@ export default props => {
             <LoadableSound
                 video_id={sound}
                 show={
+                    /* eslint-disable */
                     isTimerRunning &&
-                    // eslint-disable-next-line
                     secondsValue <= 3 &&
-                    // eslint-disable-next-line
                     minutesValue == 0
+                    /* eslint-enable */
                 }
             />
         </Paper>

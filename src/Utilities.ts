@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-export let buildYouTubeEmbedUrl = (video_id: String) => {
+export const buildYouTubeEmbedUrl = (video_id: String) => {
     return `https://www.youtube.com/embed/${video_id}?rel=0&amp;controls=0&amp;autoplay=1`
 }
 
-export let prettySecondsValue = (secondsCountNumber: Number) => {
+export const prettySecondsValue = (secondsCountNumber: Number) => {
     return secondsCountNumber < 10
-        ? String("0" + secondsCountNumber)
+        ? `0${secondsCountNumber}`
         : secondsCountNumber
 }
