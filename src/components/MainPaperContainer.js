@@ -20,7 +20,6 @@ import Slider from "@material-ui/core/Slider"
 import Input from "@material-ui/core/Input"
 import Button from "@material-ui/core/Button"
 import Clock from "@material-ui/icons/Alarm"
-import Tooltip from "@material-ui/core/Tooltip"
 import Select from "@material-ui/core/Select"
 import MenuItem from "@material-ui/core/MenuItem"
 import Grid from "@material-ui/core/Grid"
@@ -183,23 +182,21 @@ export default props => {
                     </div>
                 </Grid>
                 <br />
-                <Tooltip title={isTimerRunning ? "Stop Timer" : "Begin Timer"}>
-                    <Button
-                        variant="contained"
-                        startIcon={<Clock />}
-                        onClick={toggleRunStatus}
-                        disabled={
-                            /* eslint-disable */
-                            !isTimerRunning &&
-                            minutesValue == 0 &&
-                            secondsValue == 0
-                            /* eslint-enable */
-                        }
-                        color={isTimerRunning ? "secondary" : "primary"}
-                    >
-                        {isTimerRunning ? "Stop!" : "Begin!"}
-                    </Button>
-                </Tooltip>
+                <Button
+                    variant="contained"
+                    startIcon={<Clock />}
+                    onClick={toggleRunStatus}
+                    disabled={
+                        /* eslint-disable */
+                        !isTimerRunning &&
+                        minutesValue == 0 &&
+                        secondsValue == 0
+                        /* eslint-enable */
+                    }
+                    color={isTimerRunning ? "secondary" : "primary"}
+                >
+                    {isTimerRunning ? "Stop!" : "Begin!"}
+                </Button>
                 <br />
             </div>
             <br />
