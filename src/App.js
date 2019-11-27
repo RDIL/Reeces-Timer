@@ -19,8 +19,19 @@ import { makeStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
+import { createMuiTheme } from '@material-ui/core/styles';
+import orange from '@material-ui/core/colors/orange';
+import black from '@material-ui/core/colors/grey'
+import ThemeProvider from '@material-ui/styles/ThemeProvider'
 
 export default () => {
+    const theme = createMuiTheme({
+        palette: {
+            primary: orange,
+            secondary: black
+        }
+    })
+
     const classes = makeStyles(theme => ({
         title: {
             flexGrow: 1.01
@@ -35,14 +46,16 @@ export default () => {
 
     return (
         <div>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        Reece's Cool Timer
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <MainPaperContainer styleRefs={classes} />
+            <ThemeProvider theme={theme}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="h6" className={classes.title}>
+                            Reece's Cool Timer
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <MainPaperContainer styleRefs={classes} />
+            </ThemeProvider>
         </div>
     )
 }
