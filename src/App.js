@@ -20,15 +20,21 @@ import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import { createMuiTheme } from "@material-ui/core/styles"
-import orange from "@material-ui/core/colors/orange"
-import black from "@material-ui/core/colors/grey"
+import red from "@material-ui/core/colors/red"
+import green from "@material-ui/core/colors/green"
 import ThemeProvider from "@material-ui/styles/ThemeProvider"
 
 export default () => {
-    const theme = createMuiTheme({
+    const isHoliday = false
+    const holidayMessage = (
+        <Typography color="primary" variant="body2">
+        </Typography>
+    )
+
+    const holidayTheme = createMuiTheme({
         palette: {
-            primary: orange,
-            secondary: black
+            primary: red,
+            secondary: green
         }
     })
 
@@ -44,18 +50,22 @@ export default () => {
         }
     }))()
 
-    return (
+    let component = (
         <div>
-            <ThemeProvider theme={theme}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Typography variant="h6" className={classes.title}>
-                            Reece's Cool Timer
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <MainPaperContainer styleRefs={classes} />
-            </ThemeProvider>
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="h6" className={classes.title}>
+                        Reece's Cool Timer
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <MainPaperContainer styleRefs={classes} hMessage={holidayMessage} />
         </div>
     )
+
+    return isHoliday ? (
+        <ThemeProvider theme={holidayTheme}>
+            {component}    
+        </ThemeProvider>
+    ) : component
 }

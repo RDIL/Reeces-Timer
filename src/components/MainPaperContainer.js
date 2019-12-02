@@ -110,9 +110,7 @@ export default props => {
                     ? "Timer"
                     : `${minutesValue}:${prettySecondsValue(secondsValue)}`}
             </Typography>
-            <Typography color="primary" variant="body2">
-                Happy Thanksgiving!
-            </Typography>
+            {props.hMessage}
             <br />
             <div>
                 <Grid container justify="center" alignItems="center">
