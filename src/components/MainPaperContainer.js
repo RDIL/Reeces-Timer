@@ -110,6 +110,9 @@ export default props => {
                     ? "Timer"
                     : `${minutesValue}:${prettySecondsValue(secondsValue)}`}
             </Typography>
+            <Typography color="primary" variant="body2">
+                Happy Thanksgiving!
+            </Typography>
             <br />
             <div>
                 <Grid container justify="center" alignItems="center">
