@@ -13,14 +13,14 @@
  * limitations under the License.
  */
 
-export const buildYouTubeEmbedUrl = (data: Array<String | null>) => {
+export const buildYouTubeEmbedUrl = data => {
     const params = `controls=0&amp;autoplay=1${
         data[1] != null ? `&amp;start=${data[1]}` : ""
     }`
     return `https://www.youtube.com/embed/${data[0]}?${params}`
 }
 
-export const prettySecondsValue = (secondsCountNumber: Number) => {
+export const prettySecondsValue = secondsCountNumber => {
     return secondsCountNumber < 10
         ? `0${secondsCountNumber}`
         : secondsCountNumber

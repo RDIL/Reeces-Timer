@@ -26,8 +26,8 @@ import Grid from "@material-ui/core/Grid"
 import { prettySecondsValue } from "../Utilities"
 import LoadableSound from "./LoadableSound"
 
-const vids = ["Birds Chirping", "Xylophone Notes", "Bell"]
-const ids = ["54n9E_LwQvQ", "258OTDCrHg0", "hrqIq5hBFSw"]
+const vids = ["Xylophone Notes", "Birds Chirping", "Bell"]
+const ids = ["258OTDCrHg0", "54n9E_LwQvQ", "hrqIq5hBFSw"]
 const start_ats = [null, null, "6"]
 let listOfVideos = []
 

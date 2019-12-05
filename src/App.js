@@ -14,7 +14,7 @@
  */
 
 import React from "react"
-import MainPaperContainer from "./components/MainPaperContainer"
+import MainContainer from "./components/MainContainer"
 import { makeStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -24,7 +24,7 @@ import red from "@material-ui/core/colors/red"
 import green from "@material-ui/core/colors/green"
 import ThemeProvider from "@material-ui/styles/ThemeProvider"
 
-export default () => {
+export default props => {
     const isHoliday = false
     const holidayMessage = (
         <Typography color="primary" variant="body2">
@@ -59,7 +59,7 @@ export default () => {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <MainPaperContainer styleRefs={classes} hMessage={holidayMessage} />
+            <MainContainer styleRefs={classes} hMessage={holidayMessage} />
         </div>
     )
 
