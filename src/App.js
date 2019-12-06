@@ -65,7 +65,7 @@ export default props => {
 
     return isHoliday ? (
         <ThemeProvider theme={holidayTheme}>
-            {component}    
+            {component}
         </ThemeProvider>
     ) : component
 }
