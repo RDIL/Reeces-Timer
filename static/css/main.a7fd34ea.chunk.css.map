@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,KACI,QAAS,CACT,2BAAiC,CACjC,wBAA2B,CAC3B,iBACJ","file":"main.a7fd34ea.chunk.css","sourcesContent":["body {\n    margin: 0;\n    font-family: \"Segoe UI\", \"Roboto\";\n    background-color: lightgray;\n    text-align: center;\n}\n"]}
