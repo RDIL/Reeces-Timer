@@ -14,7 +14,13 @@
  */
 
 import React from "react"
-import { buildYouTubeEmbedUrl } from "../Utilities"
+
+const buildYouTubeEmbedUrl = data => {
+    const params = `controls=0&amp;autoplay=1${
+        data[1] != null ? `&amp;start=${data[1]}` : ""
+    }`
+    return `https://www.youtube.com/embed/${data[0]}?${params}`
+}
 
 export default props => {
     // eslint-disable-next-line

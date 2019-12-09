@@ -27,8 +27,7 @@ import ThemeProvider from "@material-ui/styles/ThemeProvider"
 export default props => {
     const isHoliday = false
     const holidayMessage = (
-        <Typography color="primary" variant="body2">
-        </Typography>
+        <Typography color="primary" variant="body2"></Typography>
     )
 
     const holidayTheme = createMuiTheme({
@@ -64,8 +63,8 @@ export default props => {
     )
 
     return isHoliday ? (
-        <ThemeProvider theme={holidayTheme}>
-            {component}
-        </ThemeProvider>
-    ) : component
+        <ThemeProvider theme={holidayTheme}>{component}</ThemeProvider>
+    ) : (
+        component
+    )
 }

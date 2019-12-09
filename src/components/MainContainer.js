@@ -23,7 +23,6 @@ import Clock from "@material-ui/icons/Alarm"
 import Select from "@material-ui/core/Select"
 import MenuItem from "@material-ui/core/MenuItem"
 import Grid from "@material-ui/core/Grid"
-import { prettySecondsValue } from "../Utilities"
 import LoadableSound from "./LoadableSound"
 
 const vids = ["Xylophone Notes", "Birds Chirping", "Bell"]
@@ -35,6 +34,12 @@ for (let key in vids) {
     listOfVideos.push(
         <MenuItem value={[ids[key], start_ats[key]]}>{vids[key]}</MenuItem>
     )
+}
+
+export const prettySecondsValue = secondsCountNumber => {
+    return secondsCountNumber < 10
+        ? `0${secondsCountNumber}`
+        : secondsCountNumber
 }
 
 export default props => {
@@ -93,8 +98,6 @@ export default props => {
                     setSecondsValue(secondsValue - 1)
                 }
             }
-
-            return () => {}
         }, 1000)
     })
 
