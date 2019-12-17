@@ -23,17 +23,18 @@ import { createMuiTheme } from "@material-ui/core/styles"
 import red from "@material-ui/core/colors/red"
 import green from "@material-ui/core/colors/green"
 import ThemeProvider from "@material-ui/styles/ThemeProvider"
+import Snow from "react-snowstorm"
 
 export default props => {
-    const isHoliday = false
+    const isHoliday = true
     const holidayMessage = (
-        <Typography color="primary" variant="body2"></Typography>
+        <Typography color="secondary" variant="body2">Happy Holidays!</Typography>
     )
 
     const holidayTheme = createMuiTheme({
         palette: {
-            primary: red,
-            secondary: green
+            primary: green,
+            secondary: red
         }
     })
 
@@ -51,6 +52,7 @@ export default props => {
 
     let component = (
         <div>
+            <Snow flakesMax={256} flakesMaxActive={128} />
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>

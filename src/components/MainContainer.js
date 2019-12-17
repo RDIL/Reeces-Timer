@@ -157,6 +157,7 @@ export default props => {
                             }
                             onChange={handleSecondSliderChange}
                             max="60"
+                            color="secondary"
                         />
                         <Input
                             className={props.styleRefs.input}
