@@ -19,16 +19,18 @@ import { makeStyles } from "@material-ui/core/styles"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
+/*
 import { createMuiTheme } from "@material-ui/core/styles"
 import red from "@material-ui/core/colors/red"
 import green from "@material-ui/core/colors/green"
 import ThemeProvider from "@material-ui/styles/ThemeProvider"
 import Snow from "react-snowstorm"
+*/
 
 export default props => {
-    const isHoliday = true
+    /*
     const holidayMessage = (
-        <Typography color="secondary" variant="body2">Happy Holidays!</Typography>
+        <Typography color="secondary" variant="body2"></Typography>
     )
 
     const holidayTheme = createMuiTheme({
@@ -37,6 +39,7 @@ export default props => {
             secondary: red
         }
     })
+    */
 
     const classes = makeStyles(theme => ({
         title: {
@@ -52,7 +55,7 @@ export default props => {
 
     let component = (
         <div>
-            <Snow flakesMax={256} flakesMaxActive={128} />
+            {/*<Snow flakesMax={256} flakesMaxActive={128} />*/}
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
@@ -60,13 +63,10 @@ export default props => {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <MainContainer styleRefs={classes} hMessage={holidayMessage} />
+            <MainContainer styleRefs={classes} hMessage={""} />
         </div>
     )
 
-    return isHoliday ? (
-        <ThemeProvider theme={holidayTheme}>{component}</ThemeProvider>
-    ) : (
-        component
-    )
+    /*return <ThemeProvider theme={holidayTheme}>{component}</ThemeProvider>*/
+    return component
 }
