@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/Reeces-Timer/static/css/main.a7fd34ea.chunk.css",
-    "main.js": "/Reeces-Timer/static/js/main.342e243c.chunk.js",
-    "main.js.map": "/Reeces-Timer/static/js/main.342e243c.chunk.js.map",
+    "main.js": "/Reeces-Timer/static/js/main.1162583b.chunk.js",
+    "main.js.map": "/Reeces-Timer/static/js/main.1162583b.chunk.js.map",
     "runtime-main.js": "/Reeces-Timer/static/js/runtime-main.ef92132b.js",
     "runtime-main.js.map": "/Reeces-Timer/static/js/runtime-main.ef92132b.js.map",
-    "static/js/2.fb28b84f.chunk.js": "/Reeces-Timer/static/js/2.fb28b84f.chunk.js",
-    "static/js/2.fb28b84f.chunk.js.map": "/Reeces-Timer/static/js/2.fb28b84f.chunk.js.map",
+    "static/js/2.2b7c4f1b.chunk.js": "/Reeces-Timer/static/js/2.2b7c4f1b.chunk.js",
+    "static/js/2.2b7c4f1b.chunk.js.map": "/Reeces-Timer/static/js/2.2b7c4f1b.chunk.js.map",
     "index.html": "/Reeces-Timer/index.html",
-    "precache-manifest.8c27da2306268913f38864de4ab66552.js": "/Reeces-Timer/precache-manifest.8c27da2306268913f38864de4ab66552.js",
+    "precache-manifest.0d8030a5438878458b7e0bf97aec2973.js": "/Reeces-Timer/precache-manifest.0d8030a5438878458b7e0bf97aec2973.js",
     "service-worker.js": "/Reeces-Timer/service-worker.js",
     "static/css/main.a7fd34ea.chunk.css.map": "/Reeces-Timer/static/css/main.a7fd34ea.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.ef92132b.js",
-    "static/js/2.fb28b84f.chunk.js",
+    "static/js/2.2b7c4f1b.chunk.js",
     "static/css/main.a7fd34ea.chunk.css",
-    "static/js/main.342e243c.chunk.js"
+    "static/js/main.1162583b.chunk.js"
   ]
 }
