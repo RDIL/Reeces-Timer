@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Reeces-Timer/precache-manifest.0d8030a5438878458b7e0bf97aec2973.js"
+  "/Reeces-Timer/precache-manifest.31c50c32c9663a76c822422b36d7bf56.js"
 );
 
 self.addEventListener('message', (event) => {
