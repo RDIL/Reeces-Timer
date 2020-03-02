@@ -113,7 +113,6 @@ export default props => {
                     ? "Timer"
                     : `${minutesValue}:${prettySecondsValue(secondsValue)}`}
             </Typography>
-            {props.hMessage}
             <br />
             <div>
                 <Grid container justify="center" alignItems="center">
