@@ -2,22 +2,19 @@
     "name": "reecestimer",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://rdil.github.io/Reeces-Timer",
+    "homepage": "https://rdil.rocks",
+    "license": "MIT",
     "dependencies": {
-        "@material-ui/core": "^4.11.0",
-        "@material-ui/icons": "^4.9.1",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
+        "@material-ui/core": "^4.11.2",
+        "@material-ui/icons": "^4.11.2",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
         "react-scripts": "^3.4.1"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
-        "prettier": "prettier --write **/*.{css,js,html,json,jsx}",
-        "predeploy": "yarn build",
-        "deploy": "gh-pages -d build",
-        "deploy-clean": "gh-pages-clean"
+        "prettier": "prettier --write **/*.{css,js,html,json,jsx}"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -34,15 +31,13 @@
         ]
     },
     "devDependencies": {
-        "@types/node": "^14.0.23",
-        "@types/react": "^16.9.43",
-        "@types/react-dom": "^16.9.8",
-        "gh-pages": "^2.2.0",
-        "prettier": "^2.0.5"
+        "@types/node": "^14.14.20",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "prettier": "^2.2.1"
     },
     "prettier": {
         "semi": false,
-        "tabWidth": 4,
-        "trailingComma": "none"
+        "tabWidth": 4
     }
 }

@@ -1,3 +1,9 @@
+# Reece's Timer
+
+> **NOTE: This project has been merged into [rdil.rocks](https://github.com/rdilweb/rdil.rocks) and is no longer updated here!**
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

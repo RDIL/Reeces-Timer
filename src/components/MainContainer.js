@@ -1,16 +1,12 @@
 /**
- * Copyright 2019-present Reece Dunham
+ * MIT License
+ * Copyright (c) 2021 Reece Dunham
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 import React from "react"
@@ -36,13 +32,13 @@ for (let key in vids) {
     )
 }
 
-export const prettySecondsValue = secondsCountNumber => {
+export const prettySecondsValue = (secondsCountNumber) => {
     return secondsCountNumber < 10
         ? `0${secondsCountNumber}`
         : secondsCountNumber
 }
 
-export default props => {
+export default (props) => {
     const [isTimerRunning, setTimerIsRunning] = React.useState(false)
 
     const [secondsValue, setSecondsValue] = React.useState(0)
@@ -53,24 +49,24 @@ export default props => {
     const handleSecondSliderChange = (event, newValue) => {
         setSecondsValue(newValue)
     }
-    const handleSecondInputChange = event => {
+    const handleSecondInputChange = (event) => {
         setSecondsValue(
             event.target.value === "" ? "" : Number(event.target.value)
         )
     }
 
-    const handleMinuteInputChange = event => {
+    const handleMinuteInputChange = (event) => {
         setMinutesValue(
             event.target.value === "" ? "" : Number(event.target.value)
         )
     }
-    const handleMinuteSliderChange = (event, newValue) => {
+    const handleMinuteSliderChange = (_event, newValue) => {
         setMinutesValue(newValue)
     }
 
-    const handleSoundChange = event => setSound(event.target.value)
+    const handleSoundChange = (event) => setSound(event.target.value)
 
-    const toggleRunStatus = event => setTimerIsRunning(!isTimerRunning)
+    const toggleRunStatus = (event) => setTimerIsRunning(!isTimerRunning)
 
     const handleBlur = () => {
         if (secondsValue < 0 || secondsValue > 60) {
@@ -105,7 +101,7 @@ export default props => {
         <Paper
             style={{
                 padding: "35px",
-                margin: "15px"
+                margin: "15px",
             }}
         >
             <Typography variant="h2">
@@ -141,7 +137,7 @@ export default props => {
                                 step: 1,
                                 min: 0,
                                 max: 60,
-                                type: "number"
+                                type: "number",
                             }}
                         />
                         <br />
@@ -167,7 +163,7 @@ export default props => {
                                 step: 1,
                                 min: 0,
                                 max: 60,
-                                type: "number"
+                                type: "number",
                             }}
                         />
                         <br />
@@ -190,11 +186,9 @@ export default props => {
                     startIcon={<Clock />}
                     onClick={toggleRunStatus}
                     disabled={
-                        /* eslint-disable */
                         !isTimerRunning &&
-                        minutesValue == 0 &&
-                        secondsValue == 0
-                        /* eslint-enable */
+                        minutesValue === 0 &&
+                        secondsValue === 0
                     }
                     color={isTimerRunning ? "secondary" : "primary"}
                 >
